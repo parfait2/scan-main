@@ -41,7 +41,8 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.green,
       ),
-      home: CameraExample(),// home: MyHomePage(title: '다발성 모반',),
+
+      home: MyHomePage(title: '다발성 모반',), // home: CameraExample(),
     );
   }
 }
@@ -58,7 +59,7 @@ class MyHomePage extends StatelessWidget {
         child: Container(
             width: 160,
             height: 160,
-            child: Center(
+            child: ElevatedButton (
                 child: Text(
                     "Scan",
                     style: TextStyle(
@@ -67,6 +68,13 @@ class MyHomePage extends StatelessWidget {
                         color: Colors.white
                     )
                 ),
+              onPressed: () {
+                // 눌렀을 때 두 번째 route로 이동합니다.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CameraExample()),
+                );
+              },
             ),
             decoration: BoxDecoration(
                 color: Colors.white24,
@@ -100,38 +108,28 @@ class MyHomePage extends StatelessWidget {
                 ),
               ),
             ),
+            SwitchListTile(
+              title: const Text('알림 허용'),
+              subtitle: const Text('알림 수신 여부를 설정합니다.'),
+              value: true,
+              activeTrackColor: Colors.pink[100],
+              activeColor: Colors.red,
+              onChanged: (value) {},
+            ),
+            Divider(color: Colors.black45),
+
+            SwitchListTile(
+              title: const Text('진동 허용'),
+              subtitle: const Text('진동 해제 시 무음'),
+              value: true,
+              activeTrackColor: Colors.pink[100],
+              activeColor: Colors.red,
+              onChanged: (value) {},
+            ),
+            Divider(color: Colors.black45),
+
             ListTile(
               title: Text('알림 시간대 설정'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('앱 기본 정보'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('앱 사용법'),
-              onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            Divider(color: Colors.black45),
-            ListTile(
-              title: Text('이용 약관'),
               onTap: () {
                 // Update the state of the app
                 // ...
@@ -143,6 +141,28 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.menu),
+            label: '메뉴',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '홈',
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              label: '환경 설정'
+          ),
+        ],
+        onTap: (index){
+          _idx = index;
+        },
+        currentIndex: _idx,
+      ),
     );
   }
 }
+
+int _idx = 0;

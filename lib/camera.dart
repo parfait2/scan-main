@@ -46,6 +46,13 @@ class _CameraExampleState extends State<CameraExample> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            ElevatedButton (
+              onPressed: () {
+                // 눌렀을 때 첫 번째 route로 되돌아 갑니다.
+                Navigator.pop(context);
+              },
+              child: Text('Go back!'),
+            ),
             SizedBox(height: 25.0),
             showImage(),
             SizedBox(
@@ -75,6 +82,7 @@ class _CameraExampleState extends State<CameraExample> {
               ],
             )
           ],
-        ));
+        ),
+      );
   }
 }
