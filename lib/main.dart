@@ -37,10 +37,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: appTitle,
-      theme: ThemeData(
-
-        primarySwatch: Colors.green,
-      ),
 
       home: MyHomePage(title: '다발성 모반',), // home: CameraExample(),
     );
@@ -75,18 +71,10 @@ class MyHomePage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => CameraExample()),
                 );
               },
-            ),
-            decoration: BoxDecoration(
-                color: Colors.white24,
-                shape: BoxShape.circle,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blueGrey.shade700.withOpacity(0.7),
-                    blurRadius: 5.0,
-                    spreadRadius: 0.0,
-                    offset: const Offset(0,7),
-                  )
-                ]
+              style: ElevatedButton.styleFrom(
+                  fixedSize: const Size(200, 200),
+                  shape: const CircleBorder(),
+              ),
             ),
           ),
       ),
