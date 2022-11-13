@@ -32,7 +32,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
-  final List<Widget> _children = [const Home(), Album(), First()];
+  final List<Widget> _children = [const Home(), Album(), MainPage()];
   void _onTap(int index) {
     setState(() {
       _currentIndex = index;
