@@ -104,13 +104,6 @@ class _AlbumState extends State<Album> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        _takePhoto();
-                      },
-                      icon: Icon(Icons.camera_alt_outlined),
-                      iconSize: 50.0,
-                    ),
-                    IconButton(
-                      onPressed: () {
                         getPickImage();
                       },
                       icon: Icon(Icons.picture_in_picture),
@@ -124,17 +117,5 @@ class _AlbumState extends State<Album> {
         ),
       ),
     );
-  }
-
-  void _takePhoto() async {
-    ImagePicker().getImage(source: ImageSource.camera).then((value) {
-      if (value != null && value.path != null) {
-        print("저장경로 : ${value.path}");
-
-        GallerySaver.saveImage(value.path).then((value) {
-          print("사진이 저장되었습니다");
-        });
-      }
-    });
   }
 }
